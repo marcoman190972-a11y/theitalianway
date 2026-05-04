@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — The Italian Way</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;500&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root { --beige: #F5F0E8; --bronze: #6B4F12; --gold: #B8860B; --text-dark: #3A2C10; --text-mid: #4A3828; --green-it: #009246; --red-it: #CE2B37; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--beige); color: var(--text-dark); font-family: 'EB Garamond', serif; overflow-x: hidden; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 18px 60px; display: flex; align-items: center; justify-content: space-between; background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(184,134,11,0.2); transition: all 0.4s; }
+.nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.nav-brand-text .name { font-family: 'Cinzel', serif; font-size: 16px; letter-spacing: 3px; color: var(--bronze); display: block; }
+.nav-brand-text .sub { font-family: 'EB Garamond', serif; font-style: italic; font-size: 13px; letter-spacing: 2px; color: var(--gold); display: block; }
+.nav-links { display: flex; gap: 40px; list-style: none; }
+.nav-links a { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--bronze); text-decoration: none; position: relative; transition: color 0.3s; }
+.nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--gold); }
+.lang-selector { display: flex; align-items: center; gap: 6px; margin-left: 32px; border-left: 1px solid rgba(184,134,11,0.25); padding-left: 24px; }
+.lang-btn { background: none; border: none; cursor: pointer; font-size: 18px; opacity: 0.45; transition: opacity 0.2s, transform 0.2s; padding: 2px; line-height: 1; }
+.lang-btn:hover { opacity: 1; transform: scale(1.15); }
+.lang-btn.active { opacity: 1; }
+.page-hero { height: 60vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.page-hero-bg { position: absolute; inset: 0; background-image: url('img/art1.jpg'); background-size: cover; background-position: center 20%; filter: brightness(0.35); }
+.page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(58,44,16,0.2), rgba(58,44,16,0.6)); }
+.page-hero-content { position: relative; z-index: 2; text-align: center; }
+.page-eyebrow { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 7px; color: rgba(184,134,11,0.9); text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 20px; }
+.page-eyebrow::before, .page-eyebrow::after { content: ''; width: 40px; height: 1px; background: rgba(184,134,11,0.5); }
+.page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 7vw, 96px); font-weight: 300; color: var(--beige); line-height: 1; }
+.page-hero h1 em { font-style: italic; color: var(--gold); }
+.tricolore { display: flex; align-items: center; gap: 12px; justify-content: center; margin-top: 24px; }
+.intro { max-width: 800px; margin: 100px auto; padding: 0 60px; text-align: center; }
+.section-eyebrow { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; display: block; }
+.intro h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4vw, 56px); font-weight: 300; color: var(--bronze); line-height: 1.2; margin-bottom: 40px; }
+.intro h2 em { font-style: italic; color: var(--gold); }
+.intro p { font-size: 20px; color: #4A3828; line-height: 1.9; margin-bottom: 24px; }
+.gold-line { width: 80px; height: 1px; background: var(--gold); margin: 48px auto; opacity: 0.5; }
+.storia { max-width: 1100px; margin: 0 auto 100px; padding: 0 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.storia-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 3.5vw, 48px); font-weight: 300; color: var(--bronze); line-height: 1.2; margin-bottom: 28px; }
+.storia-text h2 em { font-style: italic; color: var(--gold); }
+.storia-text p { font-size: 18px; color: #4A3828; line-height: 1.9; margin-bottom: 20px; }
+.storia-img { position: relative; }
+.storia-img img { width: 100%; height: 500px; object-fit: cover; filter: saturate(0.8); }
+.storia-img::before { content: ''; position: absolute; top: -16px; left: -16px; right: 16px; bottom: 16px; border: 1px solid rgba(184,134,11,0.25); z-index: -1; }
+.storia-badge { position: absolute; bottom: -20px; right: -20px; background: var(--bronze); padding: 18px 28px; font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
+.cosa { background: var(--bronze); padding: 100px 60px; position: relative; }
+.cosa::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.4; }
+.cosa-header { text-align: center; margin-bottom: 80px; }
+.cosa-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 5vw, 64px); font-weight: 300; color: var(--beige); }
+.cosa-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; }
+.cosa-item { text-align: center; position: relative; }
+.cosa-item::after { content: ''; position: absolute; right: -30px; top: 20%; height: 60%; width: 1px; background: rgba(184,134,11,0.2); }
+.cosa-item:last-child::after { display: none; }
+.cosa-num { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 300; color: var(--gold); opacity: 0.2; line-height: 1; margin-bottom: -16px; }
+.cosa-title { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 3px; color: var(--beige); text-transform: uppercase; margin-bottom: 16px; }
+.cosa-desc { font-family: 'EB Garamond', serif; font-style: italic; font-size: 19px; color: rgba(245,240,232,0.85); line-height: 1.8; }
+.promessa { padding: 100px 60px; text-align: center; border-top: 1px solid rgba(184,134,11,0.15); border-bottom: 1px solid rgba(184,134,11,0.15); }
+.big-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 3.5vw, 48px); font-weight: 300; font-style: italic; color: var(--bronze); max-width: 860px; margin: 0 auto 28px; line-height: 1.5; }
+.quote-attr { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; }
+.cta { background: var(--bronze); padding: 80px 60px; text-align: center; }
+.cta h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 52px); font-weight: 300; color: var(--beige); margin-bottom: 20px; }
+.cta h2 em { font-style: italic; color: var(--gold); }
+.cta p { font-family: 'EB Garamond', serif; font-style: italic; font-size: 20px; color: rgba(245,240,232,0.88); max-width: 600px; margin: 0 auto 40px; line-height: 1.8; }
+.btn-wa { display: inline-block; font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--bronze); background: var(--gold); padding: 20px 56px; text-decoration: none; transition: all 0.4s; margin: 0 10px; }
+.btn-wa:hover { background: var(--beige); }
+.btn-em { display: inline-block; font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--beige); background: transparent; border: 1px solid rgba(184,134,11,0.5); padding: 20px 56px; text-decoration: none; transition: all 0.4s; margin: 0 10px; }
+.btn-em:hover { border-color: var(--gold); color: var(--gold); }
+footer { background: #3A2C10; padding: 80px 60px 40px; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 80px; margin-bottom: 60px; padding-bottom: 60px; border-bottom: 1px solid rgba(184,134,11,0.15); }
+.footer-brand h3 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 300; color: var(--beige); margin-bottom: 16px; }
+.footer-brand p { font-family: 'EB Garamond', serif; font-style: italic; font-size: 16px; color: rgba(245,240,232,0.70); line-height: 1.9; }
+.footer-tri { display: flex; gap: 10px; margin-top: 24px; }
+.footer-tri span { width: 10px; height: 10px; border-radius: 50%; display: block; }
+.footer-col h4 { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 24px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 12px; }
+.footer-col ul li a { font-family: 'EB Garamond', serif; font-size: 16px; color: rgba(245,240,232,0.70); text-decoration: none; transition: color 0.3s; }
+.footer-col ul li a:hover { color: var(--gold); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+.footer-bottom p { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 2px; color: rgba(245,240,232,0.55); text-transform: uppercase; }
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+<nav id="nav">
+  <a class="nav-brand" href="index-en.html">
+    <svg width="50" height="50" viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="94" stroke="#B8860B" stroke-width="1.5"/>
+      <circle cx="100" cy="100" r="81" stroke="#B8860B" stroke-width="0.5" opacity="0.35"/>
+      <path d="M100 32C100 32 97.5 75 97 105C96.5 128 96.5 148 96.5 158C96.5 145 103.5 145 103.5 158C103.5 148 103.5 128 103 105C102.5 75 100 32 100 32Z" fill="#8B6914"/>
+      <ellipse cx="100" cy="45" rx="6" ry="9" fill="none" stroke="#8B6914" stroke-width="2.5"/>
+      <ellipse cx="100" cy="45" rx="2.5" ry="5" fill="#F5F0E8"/>
+      <path d="M97.5 158Q100 170 102.5 158Q100 165 100 172Z" fill="#8B6914"/>
+      <path d="M100 38Q68 22 52 50Q40 74 62 90Q84 104 95 82" fill="none" stroke="#B8860B" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+      <circle cx="88" cy="148" r="4" fill="#009246"/>
+      <circle cx="100" cy="148" r="4" fill="#D4C4A0"/>
+      <circle cx="112" cy="148" r="4" fill="#CE2B37"/>
+      <text x="100" y="172" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#8B6914" letter-spacing="1.5">EST. MMXXVI</text>
+    </svg>
+    <div class="nav-brand-text">
+      <span class="name">THE ITALIAN WAY</span>
+      <span class="sub">Italian Craftsmanship</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index-en.html">Home</a></li>
+    <li><a href="chi-siamo-en.html" class="active">About Us</a></li>
+    <li><a href="come-funziona-en.html">How It Works</a></li>
+    <li><a href="vetrina-en.html">Showcase</a></li>
+    <li><a href="contatti-en.html">Contact</a></li>
+    <li>
+      <div class="lang-selector">
+        <button class="lang-btn" onclick="setLang('it')" title="Italiano">🇮🇹</button>
+        <button class="lang-btn active" onclick="setLang('en')" title="English">🇺🇸</button>
+        <button class="lang-btn" onclick="setLang('fr')" title="Français">🇫🇷</button>
+        <button class="lang-btn" onclick="setLang('de')" title="Deutsch">🇩🇪</button>
+        <button class="lang-btn" onclick="setLang('es')" title="Español">🇪🇸</button>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-eyebrow">Our Story</div>
+    <h1>About <em>Us</em></h1>
+    <div class="tricolore">
+      <span style="width:12px;height:12px;border-radius:50%;background:#009246"></span>
+      <span style="width:12px;height:12px;border-radius:50%;background:rgba(245,240,232,0.8);border:1px solid rgba(184,134,11,0.5)"></span>
+      <span style="width:12px;height:12px;border-radius:50%;background:#CE2B37"></span>
+    </div>
+  </div>
+</section>
+
+<section class="intro fade-in">
+  <span class="section-eyebrow">Our Identity</span>
+  <h2>Born to bring <em>Italy</em><br>to the world</h2>
+  <p>The Italian Way was born from a deep passion for Italian craftsmanship and the conviction that the world deserves to know and touch true Made in Italy excellence.</p>
+  <p>We are not a shop. We are a bridge between the most talented Italian artisans and those around the world who can recognise and appreciate the difference between a mass-produced object and a unique piece, made by hand with care, time and mastery.</p>
+  <div class="gold-line"></div>
+</section>
+
+<section class="storia">
+  <div class="storia-text fade-in">
+    <span class="section-eyebrow">Our Mission</span>
+    <h2>Preserving a <em>heritage</em><br>that belongs to the world</h2>
+    <p>Italian craftsmanship is a unique cultural heritage. Every workshop, every master craftsman preserves techniques handed down from generation to generation, often at risk of disappearing.</p>
+    <p>Our work is to select the finest Italian artisans — from Como to Florence, from Venice to Naples — and bring their creations to those around the world who seek them without knowing where to find them.</p>
+    <p>Every object you find on The Italian Way has a story, an author, a place. It is not an anonymous product — it is a piece of Italy.</p>
+  </div>
+  <div class="storia-img fade-in">
+    <img src="img/art1.jpg" alt="Italian master craftsman at work">
+    <div class="storia-badge">Craftsmanship · Made in Italy</div>
+  </div>
+</section>
+
+<section class="cosa">
+  <div class="cosa-header fade-in">
+    <span class="section-eyebrow" style="color:var(--gold)">What We Do</span>
+    <h2>Our Activity</h2>
+  </div>
+  <div class="cosa-grid">
+    <div class="cosa-item fade-in">
+      <div class="cosa-num">I</div>
+      <h3 class="cosa-title">Selection</h3>
+      <p class="cosa-desc">We research and select the finest Italian artisans. Only those who respect tradition and work entirely by hand enter our network.</p>
+    </div>
+    <div class="cosa-item fade-in">
+      <div class="cosa-num">II</div>
+      <h3 class="cosa-title">Care</h3>
+      <p class="cosa-desc">We follow every order personally. We contact the artisan, oversee production, and take care of the packaging. Every detail matters.</p>
+    </div>
+    <div class="cosa-item fade-in">
+      <div class="cosa-num">III</div>
+      <h3 class="cosa-title">Delivery</h3>
+      <p class="cosa-desc">We ship worldwide with premium packaging. Your unique piece arrives as it deserves — protected, cared for, with the story of its creator.</p>
+    </div>
+  </div>
+</section>
+
+<section class="promessa fade-in">
+  <p class="big-quote">"We do not sell objects. We bring the world stories of hands, of time, of Italy."</p>
+  <p class="quote-attr">— The Italian Way · Est. MMXXVI</p>
+</section>
+
+<section class="cta fade-in">
+  <span class="section-eyebrow" style="color:var(--gold);display:block;margin-bottom:20px;">Let's Talk</span>
+  <h2>Any questions?<br><em>We are here.</em></h2>
+  <p>Contact us for any information. We will reply personally, in your language.</p>
+  <a href="https://wa.me/+393520942748" class="btn-wa">WhatsApp</a>
+  <a href="mailto:info@theitalianway.it" class="btn-em">Email</a>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <h3>The Italian Way</h3>
+      <p>We bring Italian artisan excellence<br>to the world, one piece at a time.</p>
+      <div class="footer-tri">
+        <span style="background:#009246"></span>
+        <span style="background:#D4C4A0"></span>
+        <span style="background:#CE2B37"></span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index-en.html">Home</a></li>
+        <li><a href="chi-siamo-en.html">About Us</a></li>
+        <li><a href="come-funziona-en.html">How It Works</a></li>
+        <li><a href="vetrina-en.html">Showcase</a></li>
+        <li><a href="contatti-en.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:info@theitalianway.it">info@theitalianway.it</a></li>
+        <li><a href="https://wa.me/+393520942748">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 The Italian Way — All rights reserved</p>
+    <p>Est. MMXXVI · Made in Italy</p>
+  </div>
+</footer>
+
+<script>
+const PAGES = { index:'index', about:'chi-siamo', how:'come-funziona', showcase:'vetrina', contact:'contatti' };
+function setLang(lang) {
+  localStorage.setItem('tiw_lang', lang);
+  const cur = location.pathname.split('/').pop() || 'chi-siamo-en.html';
+  const base = cur.replace(/-en\.html$/, '').replace(/\.html$/, '');
+  if (lang === 'en') return;
+  if (lang === 'it') location.href = base + '.html';
+  else location.href = base + '-' + lang + '.html';
+}
+(function(){ const s=localStorage.getItem('tiw_lang'); if(s&&s!=='en') setLang(s); })();
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  nav.style.padding = window.scrollY > 60 ? '10px 60px' : '18px 60px';
+  nav.style.boxShadow = window.scrollY > 60 ? '0 2px 30px rgba(107,79,18,0.1)' : 'none';
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — The Italian Way</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;500&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root { --beige: #F5F0E8; --bronze: #6B4F12; --gold: #B8860B; --text-dark: #3A2C10; --text-mid: #4A3828; --green-it: #009246; --red-it: #CE2B37; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--beige); color: var(--text-dark); font-family: 'EB Garamond', serif; overflow-x: hidden; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 18px 60px; display: flex; align-items: center; justify-content: space-between; background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(184,134,11,0.2); transition: all 0.4s; }
+.nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.nav-brand-text .name { font-family: 'Cinzel', serif; font-size: 16px; letter-spacing: 3px; color: var(--bronze); display: block; }
+.nav-brand-text .sub { font-family: 'EB Garamond', serif; font-style: italic; font-size: 13px; letter-spacing: 2px; color: var(--gold); display: block; }
+.nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+.nav-links a { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--bronze); text-decoration: none; position: relative; transition: color 0.3s; }
+.nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--gold); }
+.lang-selector { display: flex; align-items: center; gap: 6px; margin-left: 32px; border-left: 1px solid rgba(184,134,11,0.25); padding-left: 24px; }
+.lang-btn { background: none; border: none; cursor: pointer; font-size: 18px; opacity: 0.45; transition: opacity 0.2s, transform 0.2s; padding: 2px; line-height: 1; }
+.lang-btn:hover { opacity: 1; transform: scale(1.15); }
+.lang-btn.active { opacity: 1; }
+.page-hero { height: 60vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(58,44,16,0.2), rgba(58,44,16,0.6)); }
+.page-hero-content { position: relative; z-index: 2; text-align: center; }
+.page-eyebrow { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 7px; color: rgba(184,134,11,0.9); text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 20px; }
+.page-eyebrow::before, .page-eyebrow::after { content: ''; width: 40px; height: 1px; background: rgba(184,134,11,0.5); }
+.page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 7vw, 96px); font-weight: 300; color: var(--beige); line-height: 1; }
+.page-hero h1 em { font-style: italic; color: var(--gold); }
+.tricolore { display: flex; align-items: center; gap: 12px; justify-content: center; margin-top: 24px; }
+.section-eyebrow { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; display: block; }
+.intro { max-width: 800px; margin: 100px auto; padding: 0 60px; text-align: center; }
+.intro h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4vw, 56px); font-weight: 300; color: var(--bronze); line-height: 1.2; margin-bottom: 40px; }
+.intro h2 em { font-style: italic; color: var(--gold); }
+.intro p { font-size: 20px; color: #4A3828; line-height: 1.9; margin-bottom: 24px; }
+.gold-line { width: 80px; height: 1px; background: var(--gold); margin: 48px auto; opacity: 0.5; }
+.btn-wa { display: inline-block; font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--bronze); background: var(--gold); padding: 20px 56px; text-decoration: none; transition: all 0.4s; margin: 0 10px; }
+.btn-wa:hover { background: var(--beige); }
+.btn-em { display: inline-block; font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--beige); background: transparent; border: 1px solid rgba(184,134,11,0.5); padding: 20px 56px; text-decoration: none; transition: all 0.4s; margin: 0 10px; }
+.btn-em:hover { border-color: var(--gold); color: var(--gold); }
+footer { background: #3A2C10; padding: 80px 60px 40px; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 80px; margin-bottom: 60px; padding-bottom: 60px; border-bottom: 1px solid rgba(184,134,11,0.15); }
+.footer-brand h3 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 300; color: var(--beige); margin-bottom: 16px; }
+.footer-brand p { font-family: 'EB Garamond', serif; font-style: italic; font-size: 16px; color: rgba(245,240,232,0.70); line-height: 1.9; }
+.footer-tri { display: flex; gap: 10px; margin-top: 24px; }
+.footer-tri span { width: 10px; height: 10px; border-radius: 50%; display: block; }
+.footer-col h4 { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 24px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 12px; }
+.footer-col ul li a { font-family: 'EB Garamond', serif; font-size: 16px; color: rgba(245,240,232,0.70); text-decoration: none; transition: color 0.3s; }
+.footer-col ul li a:hover { color: var(--gold); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+.footer-bottom p { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 2px; color: rgba(245,240,232,0.55); text-transform: uppercase; }
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+<style>
+.intro { max-width: 700px; margin: 100px auto; padding: 0 60px; text-align: center; }
+.intro h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4vw, 52px); font-weight: 300; color: var(--bronze); line-height: 1.2; margin-bottom: 32px; }
+.intro h2 em { font-style: italic; color: var(--gold); }
+.intro p { font-size: 20px; color: #4A3828; line-height: 1.9; margin-bottom: 20px; }
+.contact-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 900px; margin: 0 auto 100px; padding: 0 60px; }
+.contact-card { background: white; border: 1px solid rgba(184,134,11,0.15); padding: 60px 50px; text-align: center; transition: all 0.4s; position: relative; overflow: hidden; text-decoration: none; display: block; }
+.contact-card::before { content: ''; position: absolute; inset: 0; background: var(--bronze); transform: translateY(100%); transition: transform 0.5s ease; z-index: 0; }
+.contact-card:hover::before { transform: translateY(0); }
+.contact-card * { position: relative; z-index: 1; }
+.contact-card:hover .card-icon { color: var(--gold); }
+.contact-card:hover .card-title { color: var(--beige); }
+.contact-card:hover .card-desc { color: rgba(245,240,232,0.85); }
+.contact-card:hover .card-link { color: var(--gold); border-color: rgba(184,134,11,0.5); }
+.card-icon { font-size: 48px; color: var(--gold); margin-bottom: 24px; display: block; transition: color 0.4s; }
+.card-title { font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: 4px; color: var(--bronze); text-transform: uppercase; margin-bottom: 20px; transition: color 0.4s; display: block; }
+.card-desc { font-family: 'EB Garamond', serif; font-style: italic; font-size: 18px; color: #4A3828; line-height: 1.8; margin-bottom: 32px; transition: color 0.4s; display: block; }
+.card-link { display: inline-block; font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--bronze); border: 1px solid rgba(107,79,18,0.3); padding: 16px 40px; text-decoration: none; transition: all 0.4s; }
+.lingue { background: var(--bronze); padding: 80px 60px; text-align: center; position: relative; }
+.lingue::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.4; }
+.lingue h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 52px); font-weight: 300; color: var(--beige); margin-bottom: 20px; }
+.lingue h2 em { font-style: italic; color: var(--gold); }
+.lingue p { font-family: 'EB Garamond', serif; font-style: italic; font-size: 20px; color: rgba(245,240,232,0.88); max-width: 600px; margin: 0 auto 40px; line-height: 1.8; }
+.flags { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+.flag-item { text-align: center; }
+.flag-emoji { font-size: 40px; display: block; margin-bottom: 8px; }
+.flag-lang { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 3px; color: rgba(245,240,232,0.80); text-transform: uppercase; }
+.promessa { padding: 100px 60px; text-align: center; border-top: 1px solid rgba(184,134,11,0.15); }
+.big-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 3vw, 44px); font-weight: 300; font-style: italic; color: var(--bronze); max-width: 800px; margin: 0 auto 28px; line-height: 1.5; }
+.quote-attr { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; }
+</style>
+
+<nav id="nav">
+  <a class="nav-brand" href="index-fr.html">
+    <svg width="50" height="50" viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="94" stroke="#B8860B" stroke-width="1.5"/>
+      <circle cx="100" cy="100" r="81" stroke="#B8860B" stroke-width="0.5" opacity="0.35"/>
+      <path d="M100 32C100 32 97.5 75 97 105C96.5 128 96.5 148 96.5 158C96.5 145 103.5 145 103.5 158C103.5 148 103.5 128 103 105C102.5 75 100 32 100 32Z" fill="#8B6914"/>
+      <ellipse cx="100" cy="45" rx="6" ry="9" fill="none" stroke="#8B6914" stroke-width="2.5"/>
+      <ellipse cx="100" cy="45" rx="2.5" ry="5" fill="#F5F0E8"/>
+      <path d="M97.5 158Q100 170 102.5 158Q100 165 100 172Z" fill="#8B6914"/>
+      <path d="M100 38Q68 22 52 50Q40 74 62 90Q84 104 95 82" fill="none" stroke="#B8860B" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+      <circle cx="88" cy="148" r="4" fill="#009246"/>
+      <circle cx="100" cy="148" r="4" fill="#D4C4A0"/>
+      <circle cx="112" cy="148" r="4" fill="#CE2B37"/>
+      <text x="100" y="172" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#8B6914" letter-spacing="1.5">EST. MMXXVI</text>
+    </svg>
+    <div class="nav-brand-text">
+      <span class="name">THE ITALIAN WAY</span>
+      <span class="sub">Artisanat Italien</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index-fr.html">Accueil</a></li>
+    <li><a href="chi-siamo-fr.html">À Propos</a></li>
+    <li><a href="come-funziona-fr.html">Comment Ça Marche</a></li>
+    <li><a href="vetrina-fr.html">Vitrine</a></li>
+    <li><a href="contatti-fr.html" class="active">Contact</a></li>
+    <li>
+      <div class="lang-selector">
+        <button class="lang-btn" onclick="setLang('it')" title="Italiano">🇮🇹</button>
+        <button class="lang-btn" onclick="setLang('en')" title="English">🇺🇸</button>
+        <button class="lang-btn active" onclick="setLang('fr')" title="Français">🇫🇷</button>
+        <button class="lang-btn" onclick="setLang('de')" title="Deutsch">🇩🇪</button>
+        <button class="lang-btn" onclick="setLang('es')" title="Español">🇪🇸</button>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div style="position:absolute;inset:0;background-image:url('img/manifesto.jpg');background-size:cover;background-position:center;filter:brightness(0.35);"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-eyebrow">Nous Sommes Là pour Vous</div>
+    <h1><em>Contact</em></h1>
+    <div class="tricolore">
+      <span style="width:12px;height:12px;border-radius:50%;background:#009246"></span>
+      <span style="width:12px;height:12px;border-radius:50%;background:rgba(245,240,232,0.8);border:1px solid rgba(184,134,11,0.5)"></span>
+      <span style="width:12px;height:12px;border-radius:50%;background:#CE2B37"></span>
+    </div>
+  </div>
+</section>
+
+<section class="intro fade-in">
+  <span class="section-eyebrow">Notre Approche</span>
+  <h2>Pas une boutique.<br><em>Une conversation.</em></h2>
+  <p>Nous ne vendons pas en ligne. Chaque achat commence par un contact direct, une conversation. Nous voulons comprendre ce que vous cherchez, ce que vous aimez, pour vous trouver la pièce parfaite.</p>
+  <p>Nous répondons personnellement, dans votre langue, sous 24 heures.</p>
+</section>
+
+<div class="contact-cards fade-in">
+  <a href="https://wa.me/+393520942748" class="contact-card" target="_blank">
+    <span class="card-icon">💬</span>
+    <span class="card-title">WhatsApp</span>
+    <span class="card-desc">La façon la plus rapide de nous parler. Nous répondons en quelques minutes pendant les heures de travail.</span>
+    <span class="card-link">Écrivez-nous sur WhatsApp</span>
+  </a>
+  <a href="mailto:info@theitalianway.it" class="contact-card">
+    <span class="card-icon">✉️</span>
+    <span class="card-title">Email</span>
+    <span class="card-desc">Pour des demandes plus détaillées ou des commandes sur mesure. Réponse garantie sous 24 heures.</span>
+    <span class="card-link">info@theitalianway.it</span>
+  </a>
+</div>
+
+<section class="lingue fade-in">
+  <h2>Nous parlons votre <em>langue</em></h2>
+  <p>Nous sommes en mesure de communiquer en plusieurs langues pour vous servir au mieux, où que vous soyez dans le monde.</p>
+  <div class="flags">
+    <div class="flag-item"><span class="flag-emoji">🇮🇹</span><span class="flag-lang">Italiano</span></div>
+    <div class="flag-item"><span class="flag-emoji">🇺🇸</span><span class="flag-lang">English</span></div>
+    <div class="flag-item"><span class="flag-emoji">🇫🇷</span><span class="flag-lang">Français</span></div>
+    <div class="flag-item"><span class="flag-emoji">🇩🇪</span><span class="flag-lang">Deutsch</span></div>
+    <div class="flag-item"><span class="flag-emoji">🇪🇸</span><span class="flag-lang">Español</span></div>
+  </div>
+</section>
+
+<section class="promessa fade-in">
+  <p class="big-quote">«Chaque conversation est le début de quelque chose de beau. Écrivez-nous — nous vous attendons.»</p>
+  <p class="quote-attr">— The Italian Way · Est. MMXXVI</p>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <h3>The Italian Way</h3>
+      <p>Nous apportons l'excellence artisanale italienne<br>au monde, une pièce à la fois.</p>
+      <div class="footer-tri">
+        <span style="background:#009246"></span>
+        <span style="background:#D4C4A0"></span>
+        <span style="background:#CE2B37"></span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index-fr.html">Accueil</a></li>
+        <li><a href="chi-siamo-fr.html">À Propos</a></li>
+        <li><a href="come-funziona-fr.html">Comment Ça Marche</a></li>
+        <li><a href="vetrina-fr.html">Vitrine</a></li>
+        <li><a href="contatti-fr.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:info@theitalianway.it">info@theitalianway.it</a></li>
+        <li><a href="https://wa.me/+393520942748">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 The Italian Way — Tous droits réservés</p>
+    <p>Est. MMXXVI · Made in Italy</p>
+  </div>
+</footer>
+
+<script>
+function setLang(lang) {
+  localStorage.setItem('tiw_lang', lang);
+  const cur = location.pathname.split('/').pop() || 'index.html';
+  // Remove current lang suffix
+  let base = cur.replace(/-fr\.html$/, '').replace(/\.html$/, '');
+  // Strip any other lang suffix
+  base = base.replace(/-(en|fr|de|es)$/, '');
+  if (lang === 'it') location.href = base + '.html';
+  else location.href = base + '-' + lang + '.html';
+}
+(function(){
+  const s = localStorage.getItem('tiw_lang');
+  if (s && s !== 'fr') setLang(s);
+})();
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  nav.style.padding = window.scrollY > 60 ? '10px 60px' : '18px 60px';
+  nav.style.boxShadow = window.scrollY > 60 ? '0 2px 30px rgba(107,79,18,0.1)' : 'none';
+});
+</script>
+</body>
+</html>
