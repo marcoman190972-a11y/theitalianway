@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collabora con Noi — The Italian Way</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;500&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root { --beige: #F5F0E8; --bronze: #6B4F12; --gold: #B8860B; --text-dark: #3A2C10; --text-mid: #4A3828; --green-it: #009246; --red-it: #CE2B37; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--beige); color: var(--text-dark); font-family: 'EB Garamond', serif; overflow-x: hidden; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 18px 60px; display: flex; align-items: center; justify-content: space-between; background: rgba(245,240,232,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(184,134,11,0.2); transition: all 0.4s; }
+.nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.nav-brand-text .name { font-family: 'Cinzel', serif; font-size: 16px; letter-spacing: 3px; color: var(--bronze); display: block; }
+.nav-brand-text .sub { font-family: 'EB Garamond', serif; font-style: italic; font-size: 13px; letter-spacing: 2px; color: var(--gold); display: block; }
+.nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+.nav-links a { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--bronze); text-decoration: none; position: relative; transition: color 0.3s; }
+.nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+.lang-selector { display: flex; align-items: center; gap: 6px; margin-left: 32px; border-left: 1px solid rgba(184,134,11,0.25); padding-left: 24px; }
+.lang-btn { background: none; border: none; cursor: pointer; font-size: 18px; opacity: 0.45; transition: opacity 0.2s, transform 0.2s; padding: 2px; line-height: 1; }
+.lang-btn:hover { opacity: 1; transform: scale(1.15); }
+.lang-btn.active { opacity: 1; }
+
+/* PAGE HERO */
+.page-hero { height: 60vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.page-hero-bg { position: absolute; inset: 0; background-image: url('img/collab3.jpg'); background-size: cover; background-position: center 30%; filter: brightness(0.35); }
+.page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(58,44,16,0.2), rgba(58,44,16,0.6)); }
+.page-hero-content { position: relative; z-index: 2; text-align: center; }
+.page-eyebrow { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 7px; color: rgba(184,134,11,0.9); text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 20px; }
+.page-eyebrow::before, .page-eyebrow::after { content: ''; width: 40px; height: 1px; background: rgba(184,134,11,0.5); }
+.page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(48px, 6vw, 86px); font-weight: 300; color: var(--beige); line-height: 1.1; }
+.page-hero h1 em { font-style: italic; color: var(--gold); }
+.tricolore { display: flex; align-items: center; gap: 12px; justify-content: center; margin-top: 24px; }
+
+/* INTRO */
+.intro { max-width: 800px; margin: 100px auto; padding: 0 60px; text-align: center; }
+.section-eyebrow { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; display: block; }
+.intro h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px, 4vw, 52px); font-weight: 300; color: var(--bronze); line-height: 1.2; margin-bottom: 32px; }
+.intro h2 em { font-style: italic; color: var(--gold); }
+.intro p { font-size: 20px; color: #4A3828; line-height: 1.9; margin-bottom: 20px; }
+.gold-line { width: 80px; height: 1px; background: var(--gold); margin: 48px auto; opacity: 0.5; }
+
+/* MODELLO */
+.modello { background: var(--bronze); padding: 100px 60px; position: relative; }
+.modello::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.4; }
+.modello-header { text-align: center; margin-bottom: 80px; }
+.modello-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(38px, 5vw, 60px); font-weight: 300; color: var(--beige); line-height: 1.2; }
+.modello-header h2 em { font-style: italic; color: var(--gold); }
+.modello-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+.modello-card { background: rgba(245,240,232,0.06); border: 1px solid rgba(184,134,11,0.25); padding: 50px 40px; text-align: center; }
+.modello-num { font-family: 'Cormorant Garamond', serif; font-size: 60px; font-weight: 300; color: var(--gold); opacity: 0.3; line-height: 1; margin-bottom: -10px; }
+.modello-title { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; display: block; }
+.modello-desc { font-family: 'EB Garamond', serif; font-style: italic; font-size: 19px; color: rgba(245,240,232,0.85); line-height: 1.8; }
+
+/* COSA CERCHIAMO */
+.cerchiamo { padding: 100px 60px; max-width: 1100px; margin: 0 auto; }
+.cerchiamo h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4vw, 54px); font-weight: 300; color: var(--bronze); line-height: 1.2; margin-bottom: 60px; text-align: center; }
+.cerchiamo h2 em { font-style: italic; color: var(--gold); }
+.cerchiamo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.cerchiamo-item { padding: 40px 32px; border: 1px solid rgba(184,134,11,0.18); text-align: center; transition: all 0.4s; }
+.cerchiamo-item:hover { border-color: var(--gold); background: rgba(184,134,11,0.04); }
+.cerchiamo-icon { font-size: 36px; display: block; margin-bottom: 20px; }
+.cerchiamo-title { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 3px; color: var(--bronze); text-transform: uppercase; margin-bottom: 14px; display: block; }
+.cerchiamo-desc { font-family: 'EB Garamond', serif; font-style: italic; font-size: 18px; color: #4A3828; line-height: 1.8; }
+
+/* FORM */
+.form-section { background: #F0EBE0; padding: 100px 60px; border-top: 1px solid rgba(184,134,11,0.15); }
+.form-inner { max-width: 760px; margin: 0 auto; }
+.form-header { text-align: center; margin-bottom: 60px; }
+.form-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4vw, 54px); font-weight: 300; color: var(--bronze); line-height: 1.2; margin-bottom: 20px; }
+.form-header h2 em { font-style: italic; color: var(--gold); }
+.form-header p { font-family: 'EB Garamond', serif; font-style: italic; font-size: 19px; color: #4A3828; line-height: 1.8; }
+
+form { display: flex; flex-direction: column; gap: 24px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-group label { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 3px; color: var(--bronze); text-transform: uppercase; }
+.form-group input,
+.form-group select,
+.form-group textarea { background: white; border: 1px solid rgba(184,134,11,0.25); padding: 16px 20px; font-family: 'EB Garamond', serif; font-size: 18px; color: var(--text-dark); outline: none; transition: border-color 0.3s; width: 100%; }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--gold); }
+.form-group textarea { resize: vertical; min-height: 140px; }
+.form-group select { appearance: none; cursor: pointer; }
+.form-note { font-family: 'EB Garamond', serif; font-style: italic; font-size: 16px; color: #6A5840; line-height: 1.7; text-align: center; padding: 20px; border: 1px solid rgba(184,134,11,0.2); background: rgba(184,134,11,0.04); }
+.btn-submit { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--bronze); background: var(--gold); border: none; padding: 20px 60px; cursor: pointer; transition: all 0.4s; align-self: center; }
+.btn-submit:hover { background: var(--bronze); color: var(--gold); }
+
+/* QUOTE */
+.quote { padding: 100px 60px; text-align: center; border-top: 1px solid rgba(184,134,11,0.15); }
+.big-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 3vw, 44px); font-weight: 300; font-style: italic; color: var(--bronze); max-width: 820px; margin: 0 auto 28px; line-height: 1.5; }
+.quote-attr { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; }
+
+/* FOOTER */
+footer { background: #3A2C10; padding: 80px 60px 40px; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 80px; margin-bottom: 60px; padding-bottom: 60px; border-bottom: 1px solid rgba(184,134,11,0.15); }
+.footer-brand h3 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 300; color: var(--beige); margin-bottom: 16px; }
+.footer-brand p { font-family: 'EB Garamond', serif; font-style: italic; font-size: 16px; color: rgba(245,240,232,0.70); line-height: 1.9; }
+.footer-tri { display: flex; gap: 10px; margin-top: 24px; }
+.footer-tri span { width: 10px; height: 10px; border-radius: 50%; display: block; }
+.footer-col h4 { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 24px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 12px; }
+.footer-col ul li a { font-family: 'EB Garamond', serif; font-size: 16px; color: rgba(245,240,232,0.70); text-decoration: none; transition: color 0.3s; }
+.footer-col ul li a:hover { color: var(--gold); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+.footer-bottom p { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 2px; color: rgba(245,240,232,0.55); text-transform: uppercase; }
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="nav-brand" href="index.html">
+    <svg width="50" height="50" viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="94" stroke="#B8860B" stroke-width="1.5"/>
+      <circle cx="100" cy="100" r="81" stroke="#B8860B" stroke-width="0.5" opacity="0.35"/>
+      <path d="M100 32C100 32 97.5 75 97 105C96.5 128 96.5 148 96.5 158C96.5 145 103.5 145 103.5 158C103.5 148 103.5 128 103 105C102.5 75 100 32 100 32Z" fill="#8B6914"/>
+      <ellipse cx="100" cy="45" rx="6" ry="9" fill="none" stroke="#8B6914" stroke-width="2.5"/>
+      <ellipse cx="100" cy="45" rx="2.5" ry="5" fill="#F5F0E8"/>
+      <path d="M97.5 158Q100 170 102.5 158Q100 165 100 172Z" fill="#8B6914"/>
+      <path d="M100 38Q68 22 52 50Q40 74 62 90Q84 104 95 82" fill="none" stroke="#B8860B" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+      <circle cx="88" cy="148" r="4" fill="#009246"/>
+      <circle cx="100" cy="148" r="4" fill="#D4C4A0"/>
+      <circle cx="112" cy="148" r="4" fill="#CE2B37"/>
+      <text x="100" y="172" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#8B6914" letter-spacing="1.5">EST. MMXXVI</text>
+    </svg>
+    <div class="nav-brand-text">
+      <span class="name">THE ITALIAN WAY</span>
+      <span class="sub">Artigianato Italiano</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="chi-siamo.html">Chi Siamo</a></li>
+    <li><a href="come-funziona.html">Come Funziona</a></li>
+    <li><a href="vetrina.html">Vetrina</a></li>
+    <li><a href="contatti.html">Contatti</a></li>
+    <li>
+      <div class="lang-selector">
+        <button class="lang-btn active" onclick="setLang('it')" title="Italiano">🇮🇹</button>
+        <button class="lang-btn" onclick="setLang('en')" title="English">🇺🇸</button>
+        <button class="lang-btn" onclick="setLang('fr')" title="Français">🇫🇷</button>
+        <button class="lang-btn" onclick="setLang('de')" title="Deutsch">🇩🇪</button>
+        <button class="lang-btn" onclick="setLang('es')" title="Español">🇪🇸</button>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-eyebrow">Per gli Artigiani</div>
+    <h1>Collabora<br><em>con Noi</em></h1>
+    <div class="tricolore">
+      <span style="width:12px;height:12px;border-radius:50%;background:#009246"></span>
+      <span style="width:12px;height:12px;border-radius:50%;background:rgba(245,240,232,0.8);border:1px solid rgba(184,134,11,0.5)"></span>
+      <span style="width:12px;height:12px;border-radius:50%;background:#CE2B37"></span>
+    </div>
+  </div>
+</section>
+
+<section style="padding:100px 80px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;" class="fade-in">
+  <div>
+    <span class="section-eyebrow">La Nostra Proposta</span>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,52px);font-weight:300;color:var(--bronze);line-height:1.2;margin-bottom:32px;">Il tuo lavoro merita<br><em style="color:var(--gold);">il mondo.</em></h2>
+    <p style="font-size:20px;color:#4A3828;line-height:1.9;margin-bottom:20px;">Sei un artigiano italiano con un prodotto autentico, fatto a mano, con storia e identità? Stiamo cercando proprio te. Non importa la dimensione della tua bottega — importa la qualità e l'autenticità di quello che crei.</p>
+    <p style="font-size:20px;color:#4A3828;line-height:1.9;">The Italian Way porta i tuoi prodotti a clienti internazionali in USA, UK, Australia, Francia e Germania. Pensiamo noi a tutto: comunicazione, vendita, spedizione. Tu crei — noi vendiamo.</p>
+  </div>
+  <div style="position:relative;">
+    <img src="img/collab5.jpg" alt="Maestro artigiano al lavoro" style="width:100%;height:540px;object-fit:cover;object-position:center top;filter:saturate(0.85);">
+    <div style="position:absolute;bottom:-20px;right:-20px;background:var(--bronze);padding:18px 28px;font-family:'Cinzel',serif;font-size:12px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;">Maestro Artigiano · Italia</div>
+  </div>
+</section>
+<div style="width:80px;height:1px;background:var(--gold);margin:40px auto 60px;opacity:0.5;"></div>
+
+<section class="modello fade-in">
+  <div class="modello-header">
+    <span class="section-eyebrow" style="color:var(--gold)">Come Funziona</span>
+    <h2>Un modello semplice,<br><em>trasparente.</em></h2>
+  </div>
+  <div style="max-width:960px;margin:0 auto 60px;height:320px;overflow:hidden;position:relative;">
+    <img src="img/collab1.jpg" alt="Artigiano al lavoro" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:brightness(0.6) saturate(0.8);">
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(22px,2.5vw,36px);color:var(--beige);text-align:center;max-width:600px;line-height:1.6;padding:0 40px;">"Tu crei con le tue mani — noi portiamo il tuo lavoro nel mondo."</p>
+    </div>
+  </div>
+  <div class="modello-grid">
+    <div class="modello-card">
+      <div class="modello-num">I</div>
+      <span class="modello-title">Ci vendi il prodotto</span>
+      <p class="modello-desc">Ci proponi il tuo prodotto con storia, immagini e prezzo. Se lo selezioniamo, lo acquistiamo direttamente da te. Pagamento garantito, nessun rischio.</p>
+    </div>
+    <div class="modello-card">
+      <div class="modello-num">II</div>
+      <span class="modello-title">Noi gestiamo tutto</span>
+      <p class="modello-desc">Pubblichiamo il prodotto sulla nostra vetrina, lo presentiamo ai clienti internazionali, gestiamo ordini, comunicazione e spedizione. Tu non devi fare nulla.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cerchiamo fade-in">
+  <span class="section-eyebrow" style="display:block;text-align:center;margin-bottom:20px;">Cosa Cerchiamo</span>
+  <h2>Artigianato puro,<br><em>da tutta Italia.</em></h2>
+  <p style="text-align:center;max-width:720px;margin:0 auto 60px;font-size:20px;color:#4A3828;line-height:1.9;font-style:italic;">Non cerchiamo merce prodotta in serie. Cerchiamo pezzi unici, creati a mano, con l'identità del loro autore impressa in ogni dettaglio. Se lo hai fatto tu con le tue mani, vogliamo vederlo.</p>
+  <div class="cerchiamo-grid" style="grid-template-columns:repeat(3,1fr);gap:32px;max-width:1100px;margin:0 auto;">
+    <div class="cerchiamo-item">
+      <span class="cerchiamo-icon">👜</span>
+      <span class="cerchiamo-title">Pelletteria</span>
+      <p class="cerchiamo-desc">Borse, portafogli, cinture, zaini e accessori in cuoio o pelle lavorati a mano, da qualsiasi regione d'Italia.</p>
+    </div>
+    <div class="cerchiamo-item">
+      <span class="cerchiamo-icon">🧣</span>
+      <span class="cerchiamo-title">Stoffe & Tessuti</span>
+      <p class="cerchiamo-desc">Foulard, sciarpe, scialli, tessuti pregiati. Seta, lana, lino, cotone — se è Made in Italy e fatto a mano, ci interessa.</p>
+    </div>
+    <div class="cerchiamo-item">
+      <span class="cerchiamo-icon">👗</span>
+      <span class="cerchiamo-title">Abbigliamento</span>
+      <p class="cerchiamo-desc">Capi sartoriali, abiti artigianali, giacche, camicie e tutto ciò che nasce da un ago e da mani esperte.</p>
+    </div>
+    <div class="cerchiamo-item">
+      <span class="cerchiamo-icon">👞</span>
+      <span class="cerchiamo-title">Calzature</span>
+      <p class="cerchiamo-desc">Scarpe, stivali e sandali artigianali. La tradizione calzaturiera italiana è riconosciuta in tutto il mondo — e noi la portiamo ovunque.</p>
+    </div>
+    <div class="cerchiamo-item">
+      <span class="cerchiamo-icon">💍</span>
+      <span class="cerchiamo-title">Gioielli & Oreficeria</span>
+      <p class="cerchiamo-desc">Gioielli artigianali, collane, bracciali, anelli. Oro, argento, pietre — lavorazione orafa tradizionale italiana.</p>
+    </div>
+    <div class="cerchiamo-item">
+      <span class="cerchiamo-icon">✋</span>
+      <span class="cerchiamo-title">Ogni Altro Artigianato</span>
+      <p class="cerchiamo-desc">Se non rientra nelle categorie sopra ma è autentico, unico e fatto a mano in Italia — presentacelo. Lo valutiamo con piacere.</p>
+    </div>
+  </div>
+
+  <div style="max-width:1100px;margin:60px auto 0;height:400px;overflow:hidden;position:relative;">
+    <img src="img/collab4.jpg" alt="Bottega artigiana" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:brightness(0.55) saturate(0.8);">
+    <div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:50px;">
+      <p style="font-family:'Cinzel',serif;font-size:13px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;">Ogni bottega ha una storia. La tua merita di essere conosciuta.</p>
+    </div>
+  </div>
+</section>
+
+<section class="form-section">
+  <div class="form-inner">
+    <div style="margin-bottom:60px;height:300px;overflow:hidden;position:relative;">
+      <img src="img/collab2.jpg" alt="Mani artigiane" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:saturate(0.85);">
+    </div>
+    <div class="form-header fade-in">
+      <span class="section-eyebrow">Presentati</span>
+      <h2>Raccontaci<br><em>la tua storia.</em></h2>
+      <p>Compila il form qui sotto. Valutiamo ogni proposta con cura e ti risponderemo entro 48 ore all'indirizzo email che ci indichi.</p>
+    </div>
+
+    <form action="https://formspree.io/f/xqenpjob" method="POST" enctype="multipart/form-data">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nome">Nome e Cognome *</label>
+          <input type="text" id="nome" name="nome" required placeholder="Mario Rossi">
+        </div>
+        <div class="form-group">
+          <label for="bottega">Nome Bottega / Azienda</label>
+          <input type="text" id="bottega" name="bottega" placeholder="Bottega Rossi">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required placeholder="mario@esempio.it">
+        </div>
+        <div class="form-group">
+          <label for="telefono">Telefono / WhatsApp</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="+39 333 000 0000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="citta">Città e Regione *</label>
+        <input type="text" id="citta" name="citta" required placeholder="Firenze, Toscana">
+      </div>
+      <div class="form-group">
+        <label for="categoria">Categoria Prodotto *</label>
+        <select id="categoria" name="categoria" required>
+          <option value="" disabled selected>Seleziona una categoria</option>
+          <option value="pelletteria">Pelletteria — Borse / Portafogli / Cinture / Accessori</option>
+          <option value="seta-tessuti">Stoffe & Tessuti — Foulard / Sciarpe / Scialli</option>
+          <option value="abbigliamento">Abbigliamento — Sartoria / Capi Artigianali</option>
+          <option value="calzature">Calzature — Scarpe / Stivali / Sandali</option>
+          <option value="gioielli">Gioielli & Oreficeria</option>
+          <option value="altro">Altro Artigianato Made in Italy</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="descrizione">Descrivi il tuo prodotto *</label>
+        <textarea id="descrizione" name="descrizione" required placeholder="Raccontaci cosa crei, come lo crei, da quante generazioni lavori in questo settore, i materiali che usi..."></textarea>
+      </div>
+      <div class="form-group">
+        <label for="immagini">Allega Immagini del Prodotto</label>
+        <input type="file" id="immagini" name="immagini" accept="image/*" multiple>
+      </div>
+      <div class="form-note">
+        Inviando questo modulo accetti che i tuoi dati vengano utilizzati esclusivamente per valutare la tua proposta di collaborazione. Non condividiamo le tue informazioni con terze parti.
+      </div>
+      <button type="submit" class="btn-submit">Invia la Proposta</button>
+    </form>
+  </div>
+</section>
+
+<section class="quote fade-in">
+  <p class="big-quote">"Le tue mani custodiscono un sapere che il mondo merita di conoscere."</p>
+  <p class="quote-attr">— The Italian Way · Est. MMXXVI</p>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <h3>The Italian Way</h3>
+      <p>Portiamo l'eccellenza artigianale italiana<br>nel mondo, un pezzo alla volta.</p>
+      <div class="footer-tri">
+        <span style="background:#009246"></span>
+        <span style="background:#D4C4A0"></span>
+        <span style="background:#CE2B37"></span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigazione</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="chi-siamo.html">Chi Siamo</a></li>
+        <li><a href="come-funziona.html">Come Funziona</a></li>
+        <li><a href="vetrina.html">Vetrina</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contatti</h4>
+      <ul>
+        <li><a href="mailto:info@theitalianway.it">info@theitalianway.it</a></li>
+        <li><a href="https://wa.me/+393520942748">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 The Italian Way — Tutti i diritti riservati</p>
+    <p>Est. MMXXVI · Made in Italy</p>
+  </div>
+</footer>
+
+<script>
+function setLang(lang) {
+  localStorage.setItem('tiw_lang', lang);
+  if (lang === 'it') return;
+  location.href = 'collabora-' + lang + '.html';
+}
+(function(){ const s=localStorage.getItem('tiw_lang'); if(s&&s!=='it') setLang(s); })();
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  nav.style.padding = window.scrollY > 60 ? '10px 60px' : '18px 60px';
+  nav.style.boxShadow = window.scrollY > 60 ? '0 2px 30px rgba(107,79,18,0.1)' : 'none';
+});
+</script>
+</body>
+</html>
